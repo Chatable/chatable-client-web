@@ -9,8 +9,16 @@
         <servlet-name>web webService</servlet-name>
         <servlet-class>com.chatable.web.server.webServiceImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>com.chatable.web.web webService</servlet-name>
+        <servlet-class>com.chatable.web.server.webServiceImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>web webService</servlet-name>
+        <url-pattern>/web/webService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>com.chatable.web.web webService</servlet-name>
         <url-pattern>/web/webService</url-pattern>
     </servlet-mapping>
 </web-app>
