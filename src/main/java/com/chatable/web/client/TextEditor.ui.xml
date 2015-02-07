@@ -1,0 +1,12 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:b='urn:import:org.gwtbootstrap3.client.ui'>
+
+<g:HTMLPanel>
+
+    <b:TextBox ui:field="text2" placeholder="Type here" autoComplete="false"/>
+    <b:Button ui:field="button1" type="WARNING"/>
+
+        <b:Button ui:field="button2" type="DANGER"/>
+    </g:HTMLPanel>
+</ui:UiBinder>
