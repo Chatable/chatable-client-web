@@ -20,7 +20,7 @@ run git clone https://github.com/Chatable/chatable-client-web.git
 # Expose the http port
 expose 12345
 
-workdir chatable
+workdir chatable-client-web
 
 cmd ["pwd"]
 cmd ["ls"]
