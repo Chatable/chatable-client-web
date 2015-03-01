@@ -24,4 +24,4 @@ workdir chatable
 
 cmd ["pwd"]
 cmd ["ls"]
-cmd ["mvn", "run"]
+# cmd ["mvn", "run"]
