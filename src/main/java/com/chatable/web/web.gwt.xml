@@ -6,6 +6,7 @@
     <inherits name='com.google.gwt.user.User'/>
     <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
     <inherits name="com.gwtplatform.mvp.Mvp"/>
+    <inherits name="org.realityforge.gwt.websockets.WebSockets"/>
     <!-- Specify the app entry point class.                   -->
     <entry-point class='com.chatable.web.client.web'/>
 

@@ -30,9 +30,10 @@ public class TextEditor extends Composite implements ClickHandler {
     @UiField
     Button button2;
 
-    
+    private web web;
 
-    public TextEditor(TextDisplay textDisplay) {
+    public TextEditor(TextDisplay textDisplay, web web) {
+        this.web = web;
         this.textDisplay = textDisplay;
         initWidget(ourUiBinder.createAndBindUi(this));
         button1.addClickHandler(this);
@@ -46,6 +47,7 @@ public class TextEditor extends Composite implements ClickHandler {
 
         if (!text2.getText().equals("")) {
             textDisplay.updateText(text2.getText());
+            web.sendMessage(text2.getText());
         }
 
     }

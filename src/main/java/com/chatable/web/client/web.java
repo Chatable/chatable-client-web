@@ -5,6 +5,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.typedarrays.shared.ArrayBuffer;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
@@ -12,13 +13,18 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import org.realityforge.gwt.websockets.client.WebSocket;
+import org.realityforge.gwt.websockets.client.WebSocketListener;
+import org.realityforge.gwt.websockets.client.WebSocketListenerAdapter;
 
+import javax.annotation.Nonnull;
 /**
  * Entry point classes define <code>onModuleLoad()</code>
  */
-public class web implements EntryPoint {
+public class web implements EntryPoint, WebSocketListener {
 
-
+    final WebSocket webSocket = WebSocket.newWebSocketIfSupported();
+    TextDisplay td = new TextDisplay();
 
 
 
@@ -30,7 +36,24 @@ public class web implements EntryPoint {
         final Label label = new Label();
         final Button button2 = new Button("Click me AGAIN");
 
+        if ( null != webSocket )
+        {
+            webSocket.setListener( new WebSocketListenerAdapter()
+            {
+                @Override
+                public void onOpen( @Nonnull final WebSocket webSocket )
+                {
+                    // After we have connected we can send
+                    webSocket.send( "Hello! New user connected through web client!" );
+                }
+                @Override
+                public void onMessage(@Nonnull WebSocket webSocket, @Nonnull String s) {
+                    td.updateText(s);
+                }
 
+            } );
+            webSocket.connect( "ws://104.236.73.126:49160" );
+        }
 
         button.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -53,8 +76,8 @@ public class web implements EntryPoint {
         //RootPanel.get("slot2").add(label);
 
 
-        TextDisplay td = new TextDisplay();
-        TextEditor tb = new TextEditor(td);
+
+        TextEditor tb = new TextEditor(td, this);
 
 
 
@@ -68,6 +91,38 @@ public class web implements EntryPoint {
         
         RootLayoutPanel.get().add(p);
 
+    }
+    
+    public void sendMessage(String s) {
+        webSocket.send( s );
+
+
+    }
+
+    @Override
+    public void onOpen(@Nonnull WebSocket webSocket) {
+        webSocket.send( "is this even called?" );
+
+    }
+
+    @Override
+    public void onClose(@Nonnull WebSocket webSocket, boolean b, int i, String s) {
+        System.out.println("CONNECTION CLOSING");
+
+    }
+
+    @Override
+    public void onMessage(@Nonnull WebSocket webSocket, @Nonnull String s) {
+    }
+
+    @Override
+    public void onMessage(@Nonnull WebSocket webSocket, @Nonnull ArrayBuffer arrayBuffer) {
+
+    }
+
+    @Override
+    public void onError(@Nonnull WebSocket webSocket) {
+        System.out.println("HUGE ARROR");
     }
 
     private static class MyAsyncCallback implements AsyncCallback<String> {

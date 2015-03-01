@@ -16,7 +16,6 @@
     
     <build>
         <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
-
         <!--
           sources need to be bundled with the jar,
           so they are visible to GWT's compiler
@@ -79,6 +78,13 @@
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-mvp-client</artifactId>
             <version>${gwtp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.realityforge.gwt.websockets</groupId>
+            <artifactId>gwt-websockets</artifactId>
+            <version>1.1.2</version>
             <scope>provided</scope>
         </dependency>
 
