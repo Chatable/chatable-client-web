@@ -5,6 +5,8 @@ The official Chatable Web Chat client
 
 [logo]: https://raw.githubusercontent.com/Chatable/chatable.github.io/master/img/chatableclienticon-small.png "Chatable"
 
+[![Build Status](https://drone.io/github.com/Chatable/chatable-client-web/status.png)](https://drone.io/github.com/Chatable/chatable-client-web/latest)
+
 ## Instructions
 
 ### 1. Compilation
