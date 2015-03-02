@@ -1,0 +1,3 @@
+# Module web
+# RPC service class, partial path of RPC policy file
+com.chatable.web.client.webService, 600A4AA4591A0CF22075A2494C9CF424.gwt.rpc

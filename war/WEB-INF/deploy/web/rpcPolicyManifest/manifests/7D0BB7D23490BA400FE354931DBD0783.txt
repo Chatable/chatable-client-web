@@ -1,0 +1,2 @@
+serviceClass: com.chatable.web.client.webService
+path: 600A4AA4591A0CF22075A2494C9CF424.gwt.rpc
