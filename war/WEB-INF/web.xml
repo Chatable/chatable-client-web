@@ -19,6 +19,6 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>com.chatable.web.web webService</servlet-name>
-        <url-pattern>/web/webService</url-pattern>
+        <url-pattern>/web/webServiceTest</url-pattern>
     </servlet-mapping>
 </web-app>

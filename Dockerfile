@@ -24,4 +24,12 @@ workdir chatable-client-web
 
 cmd ["pwd"]
 cmd ["ls"]
-# cmd ["mvn", "run"]
+cmd ["mvn", "gwt:compile"]
+cmd ["cp", "/data/chatable-client-web/war/web.html", "/data/chatable-client-web/target/chatable-client-web-1.0/"]
+cmd ["cp", "-avr", "/data/chatable-client-web/target/chatable-client-web-1.0/", "/tmp/jetty-distribution-9.2.9.v20150224/webapps/"]
+
+workdir /tmp/jetty-distribution-9.2.9.v20150224/
+
+cmd ["java", "-jar", "start.jar", "jetty.port=12345"]
+
+
