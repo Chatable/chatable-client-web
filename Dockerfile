@@ -35,6 +35,11 @@ run mvn gwt:compile
 #cmd ["cp", "/data/chatable-client-web/war/web.html", "/data/chatable-client-web/target/chatable-client-web-1.0/"]
 #cmd ["cp", "-avr", "/data/chatable-client-web/target/chatable-client-web-1.0/", "/tmp/jetty-distribution-9.2.9.v20150224/webapps/"]
 
+run cp /data/chatable-client-web/war/web.html /data/chatable-client-web/target/chatable-client-web-1.0/
+run cp -avr /data/chatable-client-web/target/chatable-client-web-1.0/ /tmp/jetty-distribution-9.2.9.v20150224/webapps/
+
+
+
 # Start the server w/ app running
 workdir /tmp/jetty-distribution-9.2.9.v20150224/
 
