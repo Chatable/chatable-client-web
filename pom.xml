@@ -50,6 +50,8 @@
                     <execution>
                         <configuration>
                             <module>com.chatable.web.web</module>
+                           <source>1.7</source>
+                           <target>1.7</target>
                         </configuration>
                         <goals>
                             <goal>compile</goal>
