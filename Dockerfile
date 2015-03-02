@@ -14,12 +14,20 @@ run apt-get install -y oracle-java8-installer
 # Install tools
 run apt-get install -y git maven
 
+
 # Clone project
 run git clone https://github.com/Chatable/chatable-client-web.git
 
 # Expose the http port
 expose 12345
 
+# Install Jetty
+workdir /tmp
+
+run wget http://download.eclipse.org/jetty/stable-9/dist/jetty-distribution-9.2.9.v20150224.tar.gz
+run tar xzvf jetty-distribution-9.2.9.v20150224.tar.gz
+
+# Compile and move GWT project
 workdir chatable-client-web
 
 cmd ["pwd"]
@@ -28,6 +36,7 @@ cmd ["mvn", "gwt:compile"]
 cmd ["cp", "/data/chatable-client-web/war/web.html", "/data/chatable-client-web/target/chatable-client-web-1.0/"]
 cmd ["cp", "-avr", "/data/chatable-client-web/target/chatable-client-web-1.0/", "/tmp/jetty-distribution-9.2.9.v20150224/webapps/"]
 
+# Start the server w/ app running
 workdir /tmp/jetty-distribution-9.2.9.v20150224/
 
 cmd ["java", "-jar", "start.jar", "jetty.port=12345"]
