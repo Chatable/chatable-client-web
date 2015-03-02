@@ -28,7 +28,7 @@ run wget http://download.eclipse.org/jetty/stable-9/dist/jetty-distribution-9.2.
 run tar xzvf jetty-distribution-9.2.9.v20150224.tar.gz
 
 # Compile and move GWT project
-workdir chatable-client-web
+workdir ../data/chatable-client-web
 
 run mvn gwt:compile
 #cmd ["mvn", "gwt:compile"]
