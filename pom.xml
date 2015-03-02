@@ -45,6 +45,8 @@
                 <version>2.7.0</version>
                 <configuration>
                     <runTarget>web.html</runTarget>
+                           <source>1.7</source>
+                           <target>1.7</target>
                 </configuration>
                 <executions>
                     <execution>
