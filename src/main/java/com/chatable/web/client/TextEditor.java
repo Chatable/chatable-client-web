@@ -1,10 +1,10 @@
 package com.chatable.web.client;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.*;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import org.gwtbootstrap3.client.ui.Button;
 
@@ -12,7 +12,7 @@ import org.gwtbootstrap3.client.ui.Button;
 /**
  * Created by henry on 8/02/2015.
  */
-public class TextEditor extends Composite implements ClickHandler {
+public class TextEditor extends Composite implements ClickHandler, KeyDownHandler {
 
     interface TextEditorUiBinder extends UiBinder<HTMLPanel, TextEditor> {
     }
@@ -38,6 +38,7 @@ public class TextEditor extends Composite implements ClickHandler {
         initWidget(ourUiBinder.createAndBindUi(this));
         button1.addClickHandler(this);
         button2.addClickHandler(this);
+        text2.addKeyDownHandler(this);
     }
 
 
@@ -48,7 +49,18 @@ public class TextEditor extends Composite implements ClickHandler {
         if (!text2.getText().equals("")) {
             textDisplay.updateText(text2.getText());
             web.sendMessage(text2.getText());
+            text2.clear();
         }
-
     }
+
+    @Override
+    public void onKeyDown(KeyDownEvent event) {
+        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+            textDisplay.updateText(text2.getText());
+            web.sendMessage(text2.getText());
+            text2.clear();
+        }
+    }
+    
+    
 }
