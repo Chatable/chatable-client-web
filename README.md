@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Chatable/chatable-client-web.png?label=ready&title=Ready)](https://waffle.io/Chatable/chatable-client-web)
 ![][logo]
 
 # Chatable Web Client
